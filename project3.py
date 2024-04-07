@@ -249,7 +249,7 @@ elif choice=='Phân tích khách hàng':
             monetary = st.slider("Monetary", 1, 1000, 100, key=f"monetary_{i}")
             
             # Thêm dữ liệu nhập vào DataFrame
-            df_customer = pd.DataFrame({"Recency": recency, "Frequency": frequency, "Monetary": monetary})
+            df_customer = pd.DataFrame({"Recency": [recency], "Frequency": [frequency], "Monetary": [monetary]})
 
         # Hiển thị DataFrame
         st.dataframe(df_customer)
