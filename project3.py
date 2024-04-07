@@ -237,8 +237,10 @@ elif choice=='Phân tích khách hàng':
         # Loop to get input from the user for each customer
             # Get input using sliders
         # Tạo DataFrame rỗng
-        df_customer = pd.DataFrame(columns=["Recency", "Frequency", "Monetary"])
-
+        #df_customer = pd.DataFrame(columns=["Recency", "Frequency", "Monetary"])
+        recency_ls = []
+        frequency_ls = []
+        monetary_ls = []
         # Lặp qua 5 khách hàng
         for i in range(2):
             st.write(f"Khách hàng {i+1}")
@@ -249,9 +251,13 @@ elif choice=='Phân tích khách hàng':
             monetary = st.slider("Monetary", 1, 1000, 100, key=f"monetary_{i}")
             
             # Thêm dữ liệu nhập vào DataFrame
-            df_customer = pd.DataFrame({"Recency": [recency], "Frequency": [frequency], "Monetary": [monetary]})
+            recency_ls.append(recency)
+            frequency_ls.append(frequency)
+            monetary_ls.append(monetary)
+            #df_customer = pd.DataFrame({"Recency": [recency], "Frequency": [frequency], "Monetary": [monetary]})
 
         # Hiển thị DataFrame
+        df_customer = pd.DataFrame({"Recency": recency_ls, "Frequency": frequency_ls, "Monetary": monetary_ls})
         st.dataframe(df_customer)
                     
         # Create labels for Recency, Frequency, Monetary
