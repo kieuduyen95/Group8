@@ -14,6 +14,7 @@ import jieba
 import re
 import string
 from wordcloud import WordCloud
+from streamlit.runtime.scriptrunner.script_run_context import get_script_run_ctx as get_report_ctx
 
 # LOADING DATA
 
