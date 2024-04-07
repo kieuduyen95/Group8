@@ -8,9 +8,4 @@ plotly
 squarify
 wordcloud
 underthesea
-string
-jieba
-datetime
-re
-io
 
