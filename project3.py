@@ -170,9 +170,10 @@ elif choice=='Phân tích khách hàng':
             #st.dataframe(filtered_df_new)
 
             st.write("#### Khách hàng đã từng mua sắm ở:")
-            country = filtered_df_new.groupby(['CustomerID', 'Country'])['Country'].value_counts().reset_index(drop=True)
-            country.columns = ['CustomerID', 'Country', 'Số lần mua hàng']
-            st.dataframe(country)
+            grouped = filtered_df_new.groupby('Country')['CustomerID'].count().reset_index()
+            grouped = grouped.rename(columns={'CustomerID': 'Count'})
+            df_top5 = grouped.sort_values(by='Count', ascending=False).head(5)
+            st.dataframe(df_top5)
             
             st.write("#### Khoảng chi tiêu ($):")
             grosssale = filtered_df_new.groupby('CustomerID').agg({'GrossSale': ['min', 'max', 'sum']}).reset_index()
